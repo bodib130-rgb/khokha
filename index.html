@@ -2,406 +2,118 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>💖</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>💗</title>
   <style>
-    :root{
-      --bg1:#060b18;
-      --bg2:#1a1035;
-      --card:#0c152dcc;
-      --txt:#f8f8ff;
-      --muted:#cfd3ff;
-      --pink:#ff4d8d;
-      --pink2:#ff79b0;
-      --gold:#ffd27a;
-      --line:#ffffff22;
-    }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      min-height:100vh;
+      margin:0; min-height:100vh; display:grid; place-items:center;
       font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial;
-      color:var(--txt);
-      overflow:hidden;
-      background:
-        radial-gradient(900px 600px at 15% 10%, #ff4d8d26, transparent 60%),
-        radial-gradient(900px 650px at 85% 20%, #ffd27a1f, transparent 60%),
-        radial-gradient(900px 650px at 50% 110%, #47d18c1a, transparent 60%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
+      background: radial-gradient(900px 500px at 20% 10%, #ff4d8d33, transparent 60%),
+                  radial-gradient(900px 500px at 80% 20%, #ffd27a22, transparent 60%),
+                  linear-gradient(135deg,#0b1020,#1a1035);
+      overflow:hidden; color:#fff;
     }
-
-    /* soft floating blobs */
-    .blob{
-      position:absolute; inset:auto;
-      width:420px; height:420px;
-      border-radius:50%;
-      filter: blur(40px);
-      opacity:.22;
-      animation: drift 10s ease-in-out infinite alternate;
-      z-index:0;
-    }
-    .b1{ left:-120px; top:-120px; background:#ff4d8d; }
-    .b2{ right:-140px; top:40px; background:#ffd27a; animation-duration:12s;}
-    .b3{ left:30%; bottom:-180px; background:#7cf0b7; animation-duration:14s;}
-    @keyframes drift{
-      from{ transform: translate(0,0) scale(1); }
-      to{ transform: translate(60px,30px) scale(1.05); }
-    }
-
-    .wrap{
-      position:relative;
-      z-index:2;
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      padding:26px;
-    }
-
     .card{
-      width:min(640px, 92vw);
-      border-radius:26px;
-      background: linear-gradient(180deg, #101b35cc, #0b1426cc);
-      border:1px solid var(--line);
-      box-shadow: 0 22px 90px #00000066;
-      backdrop-filter: blur(10px);
-      padding:28px 22px 22px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
+      width:min(520px,92vw); text-align:center;
+      padding:24px 18px; border-radius:22px;
+      background:#0f1630cc; border:1px solid #ffffff22;
+      box-shadow:0 22px 70px #00000066; backdrop-filter: blur(10px);
     }
-
-    .title{
-      margin:0 0 6px;
-      font-size:22px;
-      letter-spacing:.2px;
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
-    }
-
-    /* heart button */
-    .cta{
-      margin:22px auto 0;
-      display:grid;
-      place-items:center;
-      width:124px; height:124px;
-      border:none;
-      cursor:pointer;
-      border-radius:34px;
-      background:
-        radial-gradient(50px 50px at 30% 25%, #ffffff55, transparent 60%),
-        linear-gradient(135deg, var(--pink), var(--pink2));
-      box-shadow:
-        0 18px 55px #ff4d8d45,
-        0 10px 22px #00000055;
-      transition: transform .18s ease, filter .18s ease;
-      position:relative;
-      outline:none;
-    }
-    .cta:hover{ transform: translateY(-2px) scale(1.02); filter:saturate(1.1); }
-    .cta:active{ transform: scale(.96); }
-
-    .ring{
-      position:absolute;
-      inset:-10px;
-      border-radius:40px;
-      border:1px solid #ffffff28;
-      animation:ring 1.7s ease-in-out infinite;
-    }
-    @keyframes ring{
-      0%,100%{ transform: scale(1); opacity:.35; }
-      50%{ transform: scale(1.08); opacity:.65; }
-    }
-
-    .heartIcon{
-      width:58px; height:58px;
-      transform: rotate(45deg);
-      position:relative;
-      background:#fff;
-      border-radius:14px;
-      box-shadow: 0 12px 28px #00000025;
-    }
-    .heartIcon:before,.heartIcon:after{
-      content:"";
-      position:absolute;
-      width:58px;height:58px;
-      background:#fff;
-      border-radius:50%;
-    }
-    .heartIcon:before{ left:-29px; top:0; }
-    .heartIcon:after{ top:-29px; left:0; }
-
-    /* overlay message */
-    .overlay{
-      position:fixed; inset:0;
-      display:none;
-      place-items:center;
-      background: radial-gradient(800px 520px at 50% 35%, #ffffff10, transparent 60%), #00000070;
-      backdrop-filter: blur(10px);
-      z-index:10;
-      padding:24px;
-    }
-    .overlay.show{ display:grid; animation: fade .25s ease both; }
-    @keyframes fade{ from{opacity:0} to{opacity:1} }
-
-    .messageBox{
-      width:min(820px, 96vw);
-      border-radius:30px;
-      border:1px solid #ffffff22;
-      background: linear-gradient(180deg, #0e1732dd, #0a1026dd);
-      box-shadow: 0 28px 120px #00000088;
-      padding:34px 18px 22px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .glowLine{
-      position:absolute;
-      left:-30%;
-      top:0;
-      width:160%;
-      height:2px;
-      background: linear-gradient(90deg, transparent, #ffd27a, #ff4d8d, transparent);
-      opacity:.7;
-      animation: sweep 2.2s ease-in-out infinite;
-    }
-    @keyframes sweep{
-      0%{ transform: translateX(-20%); }
-      50%{ transform: translateX(20%); }
-      100%{ transform: translateX(-20%); }
-    }
-
-    .bigText{
-      margin:0;
-      font-weight:900;
-      font-size: clamp(44px, 8vw, 92px);
-      line-height:1.1;
-      color: var(--gold);
-      text-shadow: 0 18px 60px #ff4d8d55;
-      position:relative;
-      display:inline-block;
-      padding:10px 16px;
-      animation: pop .35s ease both;
-    }
-    @keyframes pop{
-      from{ transform: translateY(10px) scale(.96); opacity:0; }
-      to{ transform: translateY(0) scale(1); opacity:1; }
-    }
-
-    .centerHeart{
-      display:inline-block;
-      margin:12px 0 6px;
-      font-size: clamp(34px, 5vw, 54px);
-      filter: drop-shadow(0 18px 40px rgba(255,77,141,.35));
-      animation: beat .95s ease-in-out infinite;
-    }
-    @keyframes beat{
-      0%,100%{ transform: scale(1); }
-      50%{ transform: scale(1.14); }
-    }
-
-    .note{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      opacity:.95;
-    }
-
-    .close{
-      margin-top:18px;
-      border:none;
-      cursor:pointer;
-      padding:12px 16px;
-      border-radius:16px;
-      background: #ffffff10;
-      border:1px solid #ffffff22;
-      color: var(--txt);
-      font-size:14px;
+    .btn{
+      margin-top:16px; width:110px; height:110px; border:none; cursor:pointer;
+      border-radius:28px;
+      background: linear-gradient(135deg,#ff4d8d,#ff79b0);
+      box-shadow:0 18px 50px #ff4d8d55;
+      font-size:52px;
       transition:.18s;
     }
-    .close:hover{ transform: translateY(-1px); background:#ffffff14; }
-    .close:active{ transform: scale(.98); }
+    .btn:active{transform:scale(.95)}
+    .msg{
+      display:none; margin-top:18px;
+      font-weight:900;
+      font-size: clamp(44px, 7vw, 82px);
+      color:#ffd27a;
+      text-shadow:0 18px 60px #ff4d8d66;
+    }
+    .msg.show{display:block; animation: pop .25s ease both;}
+    @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
 
-    /* hearts particles */
-    .fxLayer{
-      position:fixed;
-      inset:0;
+    .sub{margin:8px 0 0; color:#cfd3ff; font-size:14px}
+    .heartBig{display:block; font-size: clamp(36px, 5vw, 54px); margin-top:6px}
+
+    /* flying hearts */
+    .h{
+      position:fixed; left:50%; top:50%;
+      transform: translate(-50%,-50%);
+      font-size:18px;
+      animation: fly 1.8s ease-out forwards;
       pointer-events:none;
-      z-index:11;
+      text-shadow:0 10px 22px rgba(255,77,141,.35);
     }
-    .pHeart{
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:14px; height:14px;
-      transform: translate(-50%,-50%) rotate(45deg);
-      background: rgba(255,77,141,.92);
-      border-radius:4px;
-      opacity:0;
-      animation: fly 2.1s ease-out forwards;
-      filter: drop-shadow(0 16px 24px rgba(255,77,141,.25));
-    }
-    .pHeart:before, .pHeart:after{
-      content:"";
-      position:absolute;
-      width:14px;height:14px;
-      background: inherit;
-      border-radius:50%;
-    }
-    .pHeart:before{ left:-7px; top:0; }
-    .pHeart:after{ top:-7px; left:0; }
-
     @keyframes fly{
-      0%{
-        transform: translate(calc(-50% + var(--x0)), calc(-50% + var(--y0))) rotate(45deg) scale(.7);
-        opacity:0;
-      }
-      12%{ opacity:1; }
-      100%{
-        transform: translate(calc(-50% + var(--x1)), calc(-50% + var(--y1))) rotate(45deg) scale(1.35);
-        opacity:0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .blob,.ring,.glowLine,.centerHeart{ animation:none!important; }
-      .pHeart{ animation-duration: .8s!important; }
+      0%{opacity:0; transform:translate(calc(-50% + var(--x0)), calc(-50% + var(--y0))) scale(.7)}
+      12%{opacity:1}
+      100%{opacity:0; transform:translate(calc(-50% + var(--x1)), calc(-50% + var(--y1))) scale(1.35)}
     }
   </style>
 </head>
 <body>
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
-  <div class="blob b3"></div>
 
-  <div class="wrap">
-    <div class="card">
-      <h1 class="title">اضغط على القلب 💗</h1>
-      <p class="sub">هتظهر رسالة كبيرة وقلوب كتير حواليها ✨</p>
+  <div class="card">
+    <div style="font-size:20px; font-weight:700;">اضغط على القلب 💗</div>
+    <div class="sub">هتظهر رسالة وقلوب كتير حواليها ✨</div>
 
-      <button class="cta" id="btn" aria-label="قلب">
-        <span class="ring"></span>
-        <span class="heartIcon"></span>
-      </button>
+    <button class="btn" id="btn">💗</button>
+
+    <div class="msg" id="msg">
+      بحبك يا خوخة عيني
+      <span class="heartBig">💖</span>
     </div>
   </div>
-
-  <div class="overlay" id="overlay" aria-hidden="true">
-    <div class="messageBox" role="dialog" aria-modal="true">
-      <div class="glowLine"></div>
-
-      <h2 class="bigText" id="bigText">بحبك يا خوخة عيني</h2>
-      <div class="centerHeart">💖</div>
-      <p class="note">دوس تاني عشان القلوب تزيد 😄</p>
-
-      <button class="close" id="closeBtn">إغلاق</button>
-    </div>
-  </div>
-
-  <div class="fxLayer" id="fx"></div>
 
   <script>
     const btn = document.getElementById("btn");
-    const overlay = document.getElementById("overlay");
-    const closeBtn = document.getElementById("closeBtn");
-    const bigText = document.getElementById("bigText");
-    const fx = document.getElementById("fx");
+    const msg = document.getElementById("msg");
 
-    let intervalId = null;
+    const hearts = ["💗","💖","❤️","💕","💘","💝"];
 
-    function rand(min, max){ return Math.random() * (max - min) + min; }
+    function r(min,max){ return Math.random()*(max-min)+min; }
 
-    function burst(fromEl, count=26){
-      const r = fromEl.getBoundingClientRect();
-      const cx = r.left + r.width/2;
-      const cy = r.top  + r.height/2;
+    function spawnAround(el, n=26){
+      const b = el.getBoundingClientRect();
+      const cx = b.left + b.width/2;
+      const cy = b.top  + b.height/2;
 
-      for(let i=0;i<count;i++){
-        const p = document.createElement("span");
-        p.className = "pHeart";
+      for(let i=0;i<n;i++){
+        const h = document.createElement("div");
+        h.className = "h";
+        h.textContent = hearts[(Math.random()*hearts.length)|0];
 
-        // start near center with small jitter
-        p.style.left = cx + "px";
-        p.style.top  = cy + "px";
-        p.style.setProperty("--x0", rand(-18, 18) + "px");
-        p.style.setProperty("--y0", rand(-14, 14) + "px");
+        h.style.left = cx + "px";
+        h.style.top  = cy + "px";
 
-        // end position (spread around)
-        const angle = rand(0, Math.PI*2);
-        const dist  = rand(140, 320);
-        const x1 = Math.cos(angle) * dist;
-        const y1 = Math.sin(angle) * dist - rand(40, 140);
+        h.style.setProperty("--x0", r(-20,20) + "px");
+        h.style.setProperty("--y0", r(-15,15) + "px");
 
-        p.style.setProperty("--x1", x1 + "px");
-        p.style.setProperty("--y1", y1 + "px");
+        const ang = r(0, Math.PI*2);
+        const dist = r(120, 280);
+        h.style.setProperty("--x1", (Math.cos(ang)*dist) + "px");
+        h.style.setProperty("--y1", (Math.sin(ang)*dist - r(40,120)) + "px");
 
-        // size variation
-        const s = rand(10, 20);
-        p.style.width = s + "px";
-        p.style.height = s + "px";
-
-        // color variation
-        const t = Math.random();
-        if(t < 0.34) p.style.background = "rgba(255,77,141,.92)";
-        else if(t < 0.67) p.style.background = "rgba(255,210,122,.92)";
-        else p.style.background = "rgba(255,255,255,.92)";
-
-        fx.appendChild(p);
-        setTimeout(()=>p.remove(), 2200);
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(), 1900);
       }
-    }
-
-    function startHearts(){
-      // قلوب مستمرة من حول النص
-      if(intervalId) clearInterval(intervalId);
-      intervalId = setInterval(() => burst(bigText, 18), 650);
-    }
-
-    function stopHearts(){
-      if(intervalId) clearInterval(intervalId);
-      intervalId = null;
     }
 
     btn.addEventListener("click", () => {
-      overlay.classList.add("show");
-      overlay.setAttribute("aria-hidden","false");
-
-      // انفجار قلوب أول ما يفتح
-      burst(btn, 34);
-      // وبعدها قلوب حوالين "بحبك..."
-      startHearts();
+      msg.classList.add("show");
+      spawnAround(btn, 30);
+      setTimeout(()=>spawnAround(msg, 40), 120); // حوالي الرسالة
     });
 
-    // لو دوست تاني جوه الرسالة تزود القلوب
-    bigText.addEventListener("click", () => burst(bigText, 34));
-
-    closeBtn.addEventListener("click", () => {
-      overlay.classList.remove("show");
-      overlay.setAttribute("aria-hidden","true");
-      stopHearts();
-    });
-
-    // ESC للإغلاق
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape" && overlay.classList.contains("show")){
-        overlay.classList.remove("show");
-        overlay.setAttribute("aria-hidden","true");
-        stopHearts();
-      }
-    });
-
-    // اضغط على الخلفية للإغلاق
-    overlay.addEventListener("click", (e) => {
-      if(e.target === overlay){
-        overlay.classList.remove("show");
-        overlay.setAttribute("aria-hidden","true");
-        stopHearts();
-      }
-    });
+    // كليك على الرسالة يزود القلوب
+    msg.addEventListener("click", () => spawnAround(msg, 50));
   </script>
 </body>
 </html>
