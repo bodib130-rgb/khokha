@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💗</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial;
+      background:
+        radial-gradient(900px 500px at 20% 10%, #ff4d8d33, transparent 60%),
+        radial-gradient(800px 500px at 80% 20%, #ffd27a22, transparent 60%),
+        linear-gradient(135deg, #0b1020, #1a1035);
+      overflow:hidden;
+      color:white;
+    }
+
+    .btn{
+      border:none;
+      background:linear-gradient(135deg,#ff4d8d,#ff79b0);
+      width:120px;height:120px;
+      border-radius:30px;
+      cursor:pointer;
+      box-shadow:0 20px 50px #ff4d8d55;
+      font-size:50px;
+      transition:.2s;
+    }
+    .btn:active{transform:scale(.95)}
+
+    .love{
+      position:fixed;
+      inset:0;
+      display:none;
+      place-items:center;
+      background:#00000055;
+      backdrop-filter: blur(6px);
+    }
+    .love.show{display:grid}
+
+    .text{
+      position:relative;
+      font-size:130px;          /* حجم بحبك */
+      font-weight:900;
+      color:#ffd27a;
+      text-shadow:0 20px 60px #ff4d8d88;
+      animation:pop .4s ease;
+    }
+
+    @keyframes pop{
+      from{transform:scale(.7);opacity:0}
+      to{transform:scale(1);opacity:1}
+    }
+
+    .heart{
+      position:absolute;
+      font-size:22px;
+      animation:float 2s linear forwards;
+      opacity:0;
+    }
+
+    @keyframes float{
+      0%{ transform:translate(0,0) scale(.6); opacity:0 }
+      15%{ opacity:1 }
+      100%{ transform:translate(var(--x), var(--y)) scale(1.4); opacity:0 }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn" id="btn">💗</button>
+
+  <div class="love" id="love">
+    <div class="text" id="text"> بحبك يا خوخة عيني</div>
+  </div>
+
+  <script>
+    const btn  = document.getElementById("btn");
+    const love = document.getElementById("love");
+    const text = document.getElementById("text");
+
+    function rand(min,max){ return Math.random()*(max-min)+min }
+
+    function spawn(){
+      for(let i=0;i<25;i++){
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.innerHTML = "❤️";
+
+        const angle = rand(0, Math.PI*2);
+        const dist  = rand(80, 220);
+
+        const x = Math.cos(angle)*dist + "px";
+        const y = Math.sin(angle)*dist + "px";
+
+        h.style.setProperty("--x", x);
+        h.style.setProperty("--y", y);
+
+        text.appendChild(h);
+        setTimeout(()=>h.remove(), 2000);
+      }
+    }
+
+    btn.onclick = () => {
+      love.classList.add("show");
+      spawn();
+      setInterval(spawn, 700);   // قلوب مستمرة
+    };
+  </script>
+
+</body>
+</html>
